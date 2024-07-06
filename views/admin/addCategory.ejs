@@ -1,0 +1,64 @@
+<%- include("adminheader") %>
+<!-- add category -->
+<div class="admin-new-category-container">
+    <%- include("adminNav") %>
+    <% if (categoryStatus === "new") { %>
+    <main class="admin-new-category-main">
+        <section class="admin-new-category-form-container">
+            <h2>New Category</h2>
+            <form id="categoryForm" action="/admin/addCategory" method="post" class="admin-new-category-form">
+                <label for="categoryName">Category Name*</label>
+                <input type="text" id="categoryName" name="categoryName" required>
+                
+                <label for="categoryDescription">Description*</label>
+                <textarea id="categoryDescription" name="description" required></textarea>
+                
+                <button type="submit">Add Category</button>
+            </form>
+            <div id="alert" style="display: none; color: red;">Category name already exists</div>
+        </section>
+    </main>
+    <% } else { %>
+    <main class="admin-new-category-main">
+        <section class="admin-new-category-form-container">
+            <h2>Update Category</h2>
+            <form id="categoryForm" action="/admin/editCategory/<%= category._id %>" method="post" class="admin-new-category-form">
+                <label for="categoryName">Category Name*</label>
+                <input type="text" id="categoryName" name="categoryName" required value="<%= category.categoryName %>">
+                
+                <label for="categoryDescription">Description*</label>
+                <textarea id="categoryDescription" name="description" required><%= category.description %></textarea>
+                
+                <button type="submit">Update Category</button>
+            </form>
+            <div id="alert" style="display: none; color: red;">Category name already exists</div>
+        </section>
+    </main>
+    <% } %>
+</div>
+<%- include("adminfooter") %>
+
+<script>
+document.getElementById('categoryForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the form from submitting immediately
+
+    const categoryName = document.getElementById('categoryName').value;
+    const actionUrl = this.getAttribute('action');
+    const isUpdate = actionUrl.includes('/editCategory/');
+    const categoryId = isUpdate ? actionUrl.split('/editCategory/')[1] : null;
+
+    const response = await fetch(`/admin/checkCategoryExists?categoryName=${encodeURIComponent(categoryName)}`);
+    const data = await response.json();
+
+    if (data.exists) {
+        if (isUpdate && data.categoryId === categoryId) {
+            // Category name is the same as the current category being updated
+            this.submit();
+        } else {
+            document.getElementById('alert').style.display = 'block';
+        }
+    } else {
+        this.submit(); // Submit the form if the category name is unique
+    }
+});
+</script>

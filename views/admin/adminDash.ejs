@@ -1,0 +1,52 @@
+<%- include("adminheader")%>
+<!-- admin dash  -->
+<div class="admin-dashboard-container">
+    <%-include("adminNav")%>
+    <main class="admin-dashboard-main">
+        <header class="admin-dashboard-header">
+            <h1 class="admin-dashboard-title">Sales Summary</h1>
+            <div class="admin-dashboard-controls">
+                <div class="admin-dashboard-year-selector">
+                    <img src="calendar-icon.png" alt="Calendar">
+                    <select>
+                        <option value="2024">2024</option>
+                        <!-- Add more years as needed -->
+                    </select>
+                </div>
+                <button class="admin-dashboard-download-button">Download</button>
+            </div>
+        </header>
+        <section class="admin-dashboard-stats">
+            <div class="admin-dashboard-stat">
+                <h3>Revenue</h3>
+                <p>$7,825</p>
+                <span class="admin-dashboard-change positive">+ 22%</span>
+            </div>
+            <div class="admin-dashboard-stat">
+                <h3>Orders</h3>
+                <p>920</p>
+                <span class="admin-dashboard-change negative">- 25%</span>
+            </div>
+            <div class="admin-dashboard-stat">
+                <h3>Products Sold</h3>
+                <p>15.5K</p>
+                <span class="admin-dashboard-change positive">+ 49%</span>
+            </div>
+            <div class="admin-dashboard-stat">
+                <h3>Total Customers</h3>
+                <p>120</p>
+                <span class="admin-dashboard-change positive">+ 4%</span>
+            </div>
+        </section>
+        <section class="admin-dashboard-chart">
+            <h3>Orders Update</h3>
+            <!-- Placeholder for chart -->
+            <div class="admin-dashboard-chart-placeholder">
+                <img src="chart-placeholder.png" alt="Chart">
+            </div>
+            <a href="#" class="admin-dashboard-view-details">View Details</a>
+        </section>
+    </main>
+</div>
+<!-- dash end -->
+<%- include("adminfooter")%>

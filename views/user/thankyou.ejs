@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounceIn {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+        }
+        
+        .thankyou-page-container {
+    
+            width: 61%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000;
+    padding: 89px;
+    margin: auto;
+    border-radius: 10px;
+    animation: fadeIn 1s ease-in-out;
+        }
+        
+        .thankyou-page-header {
+            background-color: #34c759;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .thankyou-page-check-icon {
+            font-size: 50px;
+            animation: bounceIn 1s ease-in-out;
+        }
+        
+        .thankyou-page-details {
+            background-color: #dad0bf;
+            border-radius: 1rem;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .thankyou-page-progress {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            animation: slideIn 1s ease-in-out;
+        }
+        
+        .thankyou-page-step {
+            flex: 1;
+            padding: 10px;
+            border-bottom: 2px solid #dddddd;
+            text-align: center;
+        }
+        
+        .thankyou-page-step.completed {
+            border-bottom: 2px solid #34c759;
+            color: #34c759;
+        }
+        
+        .thankyou-page-sidebar {
+            background-color: #f9f9f9;
+            padding: 20px;
+            width: 100%;
+            border-radius: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .thankyou-page-order-details,
+        .thankyou-page-address,
+        .thankyou-page-contact,
+        .thankyou-page-summary {
+            margin-bottom: 20px;
+        }
+        
+        .thankyou-page-order-details h3,
+        .thankyou-page-address h3,
+        .thankyou-page-contact h3,
+        .thankyou-page-summary h3 {
+            margin-top: 0;
+        }
+        
+        .thankyou-page-order-details button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .thankyou-page-order-details button:hover {
+            background-color: #0056b3;
+        }
+        
+        .thankyou-page-address a {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .thankyou-page-address a:hover {
+            text-decoration: underline;
+        }
+        
+        .thankyou-page-summary p {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .thankyou-page-container {
+                flex-direction: column;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="thankyou-page-container">
+        <div class="thankyou-page-header">
+            <div class="thankyou-page-check-icon">
+                ✔
+            </div>
+            <h2>THANK YOU</h2>
+            <h1>YOUR ORDER IS CONFIRMED</h1>
+            <p>We will be sending you an email confirmation to <%=user%> shortly</p>
+        </div>
+        <div class="thankyou-page-details">
+            <!-- <p>Order <b>#2059666</b> was placed on <b>January 13, 2021</b> and is currently in progress</p> -->
+            <div class="thankyou-page-progress">
+                <div class="thankyou-page-step completed">
+                    <span>ORDER CONFIRMED</span>
+                </div>
+                <div class="thankyou-page-step">
+                    <span>START PRODUCTION</span>
+                </div>
+                <div class="thankyou-page-step">
+                    <span>QUALITY CHECK</span>
+                </div>
+                <div class="thankyou-page-step">
+                    <span>DISPATCHED ITEM</span>
+                </div>
+                <div class="thankyou-page-step">
+                    <span>PRODUCT DELIVERED</span>
+                </div>
+            </div>
+            <p><a href="/order-status">Track Your Order</a></p>
+        </div>
+    </div>
+</body>
+</html>
